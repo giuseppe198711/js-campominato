@@ -11,21 +11,37 @@
 // con difficoltà 1 =>  tra 1 e 80
 // con difficoltà 2 => tra 1 e 50
 
+// var bombe = 3;
+// var tentativi = 10;
 
-//var bombe = 16;
-//var tentativi = 100;
+// funzione che genera un numero casuale tra 1 e 100
+function numeroRandom() { //lasciamo le parentesi vuote perche la funzione non accetta paramentri in entrata
+  var numeroACaso = Math.floor(Math.random() * 100) + 1;
+  return numeroACaso;
+}
+//funzione che controlla se in un array esiste un determinato numero
 
-//funzione che genera un numero casuale tra 1 e 100
+function controllo(array, num) {
 
-//funzione che dato un array e un numero mi controlla che il numero non sia già nell'array
+}
 
 //creo variabile array che contiene i numeri bomba
+function random16Num() { //creo una funzione per generare un array con all'interno 16 numeri diversi
+
+}
+
+
+
+
+
+
 
 //ciclo che chiama la mia funzione di generazione dei numeri 16 volte  while(i<bombe)
     //check che il numero non sia duplicato
     //se non è duplicato, lo salvo nell'array bombe
 
 //creo variabile array che contiene i numeri utente
+
 
 //variabili booleana haPerso = false
 
