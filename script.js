@@ -19,43 +19,60 @@ function numeroRandom() { //lasciamo le parentesi vuote perche la funzione non a
   var numeroACaso = Math.floor(Math.random() * 100) + 1;
   return numeroACaso;
 }
+
 //funzione che controlla se in un array esiste un determinato numero
-
+// immagino l'array come una fila di numeri e il (num) è il numero che andiamo a pescare
 function controllo(array, num) {
+  for (var i = 0; i < array.length; i++) {
 
+    if (array[i] == num){
+       return true;
+    }
+  }
+  return false;
 }
-
 //creo variabile array che contiene i numeri bomba
-function random16Num() { //creo una funzione per generare un array con all'interno 16 numeri diversi
+var arrayBombe = []
+//per richiamarla basta digitare numeroRandom
+
+// avvio un ciclo per trovare i 16 numeri delle bombe
+for (var i = 0; i < 16; i++) {
+
+  // applicando la funzione numeroRandom trovo il mio numeroCasuale
+  var numeroCasuale = numeroRandom();
+
+  // applicando la funzione controllo verifico che non ci sono doppioni nei miei numeri/bomba
+  var esitoControllo = controllo(arrayBombe, numeroCasuale);
+  //usufruisco del ciclo while per far si che quando si tova un numero doppione genero un altro numero e verifico
+  //se si trova di nuovo nell'array
+    while (esitoControllo == true) {
+      numeroCasuale = numeroRandom();
+      esitoControllo = controllo(arrayBombe, numeroCasuale);
+    }
+      // inserisco il numeroCasuale all'interno dell'arrayBombe
+     arrayBombe.push(numeroCasuale);
 
 }
+console.log(arrayBombe);
 
+var i = 0;
+var fineGioco = false;
+var arrayUtente = [];
+while ((i < 84) && (fineGioco == false)) { //continua a chiedermi di inserire un numero fino a quando me lo ha chiesto 84 volte oppure fin quando sbaglio
+  //faccio inserire all'utente 1 numero da 1 a 100;
+  var numeroUtente = parseInt(prompt("Inserisci un numero da 1 a 100"));
+  //richiamo la funzione ""controllo" per controllare se l'utente ha messo un numero uguale a quello delle bombe
+  //oppure no
+   if (controllo(arrayBombe,numeroUtente) == true) {
+     alert("Hai perso, sei arrivato al livello: " + i);
+     fineGioco = true;
+   } else if (numeroUtente < 1 || numeroUtente > 100) {
+     alert ("Hai inserito un numero che non è compreso tra 1 e 100");
+     --i;
+   } else if (true) {
 
-
-
-
-
-
-//ciclo che chiama la mia funzione di generazione dei numeri 16 volte  while(i<bombe)
-    //check che il numero non sia duplicato
-    //se non è duplicato, lo salvo nell'array bombe
-
-//creo variabile array che contiene i numeri utente
-
-
-//variabili booleana haPerso = false
-
-//ciclo di 100-16 volte  //for(i=0; i<tentativi-bombe; i++)
-  //prompt in cui chiedo all'utente un numero
-  //check che il numero sia compreso tra 1 e 100
-  //check che il numero non sia duplicato nell'array utente
-  //se non è duplicato, salvo il numero nell'array utente
-  //check che il numero non sia nell'array bomba
-  //se il numero è nell'array bomba -> alert hai perso
-      //alert con array utente .length -> numero di volte che l'utente ha inserito un numero corretto
-      //haPerso = true;
-      //esco dal ciclo
-
-//controllo se haPerso è false
-  //alert hai vinto
-  //alert con array utente .length -> numero di volte che l'utente ha inserito un numero corretto
+   } else {
+     alert("bravo...continua");
+   }
+   i++;
+}
